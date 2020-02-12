@@ -6,7 +6,8 @@ COPY --chown=nobody ./config/nginx.conf /etc/nginx/conf.d/nginx.conf
 RUN rm /etc/nginx/conf.d/default.conf
 
 RUN apk update && apk upgrade \
-&& apk add php7 php7-fpm supervisor
+&& apk add supervisor curl \
+&& apk add php7 php7-fpm php7-dom php7-session php7-json php7-pdo php7-mbstring php7-tokenizer php7-iconv php7-pdo_mysql php7-xml php7-curl php7-soap php7-pdo_sqlite php7-simplexml
 
 # Configure supervisord
 COPY config/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
